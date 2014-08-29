@@ -39,7 +39,7 @@ tomcat_conf:
     - require:
       - file: tomcat_env
     {% else %}
-    - name: /etc/default/tomcat{{ tomcat.version }}
+    - name: /etc/tomcat{{ tomcat.version }}
     - text:
       - JAVA_HOME={{ salt['pillar.get']('java:home', '/usr') }}
       - JAVA_OPTS="-Djava.awt.headless=true -Xmx{{ salt['pillar.get']('java:Xmx', '3G') }} -XX:MaxPermSize={{ salt['pillar.get']('java:MaxPermSize', '256m') }}"
