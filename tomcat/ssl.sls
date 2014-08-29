@@ -1,5 +1,8 @@
 {% from "tomcat/map.jinja" import tomcat with context %}
 
+include:
+  - tomcat
+
 /etc/{{ tomcat.name }}{{ tomcat.version }}/server.xml:
     file.managed:
         - source: salt://tomcat/files/server.xml
@@ -29,9 +32,10 @@
             keystorePass: {{ salt['pillar.get']('tomcat:connector:keystorePass', '') }}
             {% endif %}
 
-{{ tomcat.service }}:
-  service:
-    - running
-    - watch:
-      - file: /etc/{{ tomcat.name }}{{ tomcat.version }}/server.xml
+extend:
+  {{ tomcat.name }}{{ tomcat.version }}:
+    service:
+      - running
+      - watch:
+        - file: /etc/{{ tomcat.name }}{{ tomcat.version }}/server.xml
 
