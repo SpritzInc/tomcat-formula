@@ -34,8 +34,9 @@ include:
 
 extend:
   {{ tomcat.name }}{{ tomcat.version }}:
-    service:
-      - running
+    service.running:
       - watch:
+        - file: /etc/{{ tomcat.name }}{{ tomcat.version }}/server.xml
+      - require:
         - file: /etc/{{ tomcat.name }}{{ tomcat.version }}/server.xml
 
