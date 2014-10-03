@@ -53,7 +53,7 @@ tomcat_conf:
       - TOMCAT{{ tomcat.version }}_SECURITY={{ salt['pillar.get']('tomcat:security', 'no') }}
       {% endif %}
       {% if salt['pillar.get']('java:CATALINA_OPTS') %}
-      - CATALINA_OPTS="$CATALINA_OPTS {{ salt['pillar.get']('java:CATALINA_OPTS', '') }}"
+      - CATALINA_OPTS="{{ salt['pillar.get']('java:CATALINA_OPTS', '') }}"
       {% endif %}
     {% endif %}
 
