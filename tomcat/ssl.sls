@@ -28,6 +28,7 @@ include:
             SSLEnabled: {{ salt['pillar.get']('tomcat:connector:SSLEnabled') }}
             clientAuth: {{ salt['pillar.get']('tomcat:connector:clientAuth', 'false') }}
             sslProtocol: {{ salt['pillar.get']('tomcat:connector:sslProtocol', 'TLS') }}
+            ciphers: {{ salt['pillar.get']('tomcat:connector:ciphers', '') }}
             keystoreFile: {{ salt['pillar.get']('tomcat:connector:keystoreFile') }}
             keystorePass: {{ salt['pillar.get']('tomcat:connector:keystorePass', '') }}
             {% endif %}
