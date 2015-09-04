@@ -85,9 +85,7 @@
       SSLEnabled="{{ SSLEnabled }}"
       clientAuth="{{ clientAuth }}"
       sslProtocol="{{ sslProtocol }}"
-{% if ciphers != '' and ciphers != None %}
-      ciphers="{{ciphers}}"
-{% endif %}       
+{% if ciphers != '' and ciphers != None %}      ciphers="{{ciphers}}"{% endif %}       
       keystoreFile="{{ keystoreFile }}"
       keystorePass="{{ keystorePass }}" />
     {% elif port is defined %}
